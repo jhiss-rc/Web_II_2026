@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header{
+    background-color: #352208;
+    color: #ffffff;
+    text-align: center;
+    font-size: large;
+    margin: 0;
+    padding: 50px;
+    font-size: 20px;
+}
+h3{
+    color: #e5d1d0;
+    text-align: center;
+    margin-bottom: 2px;
+}
+h2{
+    color: #2f2d2f;
+    text-align: center;
+    margin-top:  50px;
+}
+ul li{
+    margin-bottom: 10px;
+
+}
+footer{
+    background-color: #352208;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+
+}
+section{   
+    color: black;
+    border-radius: 3px;
+    margin: 5px;
+}
+.contenedor1{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.card{
+    margin: 20px;
+    padding: 2px;
+    width: 900px;
+    text-align: center;
+    background-color: #e1bb80;
+    border-radius: 20px;  
+    border: 2px solid rgb(185, 180, 180);
+    box-shadow: 2px 2px 5px rgb(160, 156, 156);
+}
+
+
+.contenedor2{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card2{
+    margin: 10px;
+    padding: 2px;
+    width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;  
+    border: 2px solid rgb(185, 180, 180);
+    box-shadow: 2px 2px 5px rgb(160, 156, 156);
+}
+.card1{
+    margin: 20px;
+    padding: 2px;
+    width: 500px;
+    text-align: center;
+    background-color: #7b6b43;
+    border-radius: 10px;  
+    border: 2px solid rgb(185, 180, 180);
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+    font-size: 18px;
+}
+.card3{
+    margin: 20px;
+    padding: 2px;
+    width: 500px;
+    text-align: center;
+    background-color: #685634;
+    border-radius: 10px;  
+    border: 2px solid rgb(185, 180, 180);
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+    font-size: 18px;
+}
+.card4{
+    margin: 20px;
+    padding: 2px;
+    width: 500px;
+    text-align: center;
+    background-color: #806443;
+    border-radius: 10px;  
+    border: 2px solid rgb(185, 180, 180);
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+    font-size: 18px;
+}
