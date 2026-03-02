@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 4 QUERYSELECTOR ALL</title>
+</head>
+<body>
+    <p>nombre 1</p>
+    <p>nombre 2</p>
+    <p>nombre 3</p>
+
+    <script>
+        //agarrar por etiqueta del mismo tipo
+        const elementos = document.querySelectorAll('p')
+        elementos.forEach((elemento) =>{
+            // elemento.style.display = 'none'; //ocultar elemento
+            elemento.style.backgroundColor = '#cbeef3';
+            elemento.style.color = '#dd2d4a';
+        });
+    </script>
+</body>
+</html>

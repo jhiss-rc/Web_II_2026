@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 Identificadores</title>
+</head>
+<body>
+    <div id="rata">TEXTO INICIAL</div>
+    <script>
+        //inhectar codigo js en html
+        // obtener identificador de docuemento
+        // manipular html a tarves de js
+        //ocument.getElementById agarra todo el contenido a traves de su identificador
+        //para ca,biar estilos
+        const elemento = document.getElementById('rata'); 
+        
+        console.log(elemento.textContent) // solo se ve en consola
+        elemento.textContent = 'nuevo texto'
+    </script>
+</body>
+</html>

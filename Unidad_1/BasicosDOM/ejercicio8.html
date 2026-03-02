@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 8 USO DE STYLE</title>
+</head>
+<body>
+    <p>uno</p>
+    <p>dos</p>
+    <p>tres</p>
+    <p>cuatro</p>
+    <script>
+        const elementos = document.querySelectorAll('p')
+        elementos.forEach((elemento) =>{
+            elemento.style.backgroundColor = '#385f71';
+            elemento.style.color = 'white';
+            elemento.style.fontSize = '20px';
+            elemento.style.fontFamily = 'Courier New, Courier, monospace';
+            elemento.style.padding = '10px';
+            elemento.style.borderRadius = '10px';
+        })
+    </script>
+</body>
+</html>

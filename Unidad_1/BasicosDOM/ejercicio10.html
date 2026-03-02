@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 10 USO DE APENDCHILD</title>
+</head>
+<body>
+    <div id="contenedor1">Contendor inicial</div>
+    <button id="boton">Agregar Elemento</button>
+    <script>
+        // para crear elementos en html con js se usa el metodo createElement
+        const nuevo_Elemento = document.createElement('div');
+        nuevo_Elemento.textContent = 'Elemento Creado con DOM :)'
+
+        const contenedor = document.getElementById('contenedor1');
+        contenedor.appendChild(nuevo_Elemento) //agrega el nuevo elemento (hijo) al contenedor 
+        console.log(contenedor1)
+        // tambien se puede eliminar un elemento con removeChild
+
+    </script>
+</body>
+</html>

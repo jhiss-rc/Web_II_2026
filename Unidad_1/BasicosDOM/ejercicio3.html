@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 3 SELECCION CON QUERYSELECTOR</title>
+</head>
+<body>
+    <input type="hola" id="elemento" value=" valor inicial">
+    <input type="hola" id="elemento" value=" valor inicial">
+    <script>
+        //sirve para hacer consulta. en el parentesis se pregunta algo
+        // todos los elementos que tengan su input "tipo texto"
+        // se llama por un atributo del input
+        // solo agarra el primer elemento que encuentre
+        const input1 = document.querySelector('input[type="hola"]') 
+        input1.value = 'cebolla' //cambiar el valor del input
+    </script>
+</body>
+</html>

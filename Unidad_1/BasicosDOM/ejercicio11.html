@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 11 REMOVECHILD</title>
+</head>
+<body>
+    <div id="contenedor">
+        <p>esto no se elimina</p>
+        <div id="eliminado">div eliminado</div>
+    </div>
+    <script>
+        // 1. identificar el elemento a eliminar
+        // 2. identificar el padre del elemento a eliminar
+        // 3. eliminar el elemento hijo del padre a traves del Padre
+        const elementoEliminar= document.getElementById('eliminado'); // llamar al elemento a eliminar
+        const elementoPadre = elementoEliminar.parentElement; // identifica quien es el padre del elemento a eliminar
+        elementoPadre.removeChild(elementoEliminar); // elimina el elemento hijo del padre  
+    </script>
+</body>
+</html>

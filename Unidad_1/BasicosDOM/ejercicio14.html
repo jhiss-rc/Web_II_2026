@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 14 STOPPROPAGATION</title>
+</head>
+<body>
+    <div id="padre">Elemento Padre
+        <div id="hijo">Elemento Hijo</div>
+    </div>
+    <script>
+        const elementoHijo= document.getElementById('hijo');
+        elementoHijo.addEventListener('click', (evento) =>{ // evento se puede reducir con e
+            evento.stopPropagation(); // detiene la propagacion del evento, es decir, el evento no se propaga a los elementos padres
+            alert('evento hijo')
+        });
+        const elementoPadre = document.getElementById('padre');
+        elementoPadre.addEventListener('click', (evento)=>{
+            alert('evento padre')
+        })
+    </script>
+</body>
+</html>
