@@ -1,0 +1,50 @@
+.head{
+    color: aliceblue;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    border-bottom: 1px solid #0b0606;
+    padding: 0.5rem 1rem;
+    background-color:rgb(8, 21, 22);
+    gap: 1rem;
+}
+
+.head__logo{
+    height: 75px;
+    flex: 0 0 auto;
+}
+
+.head__nav {
+    flex: 1 1 auto;
+}
+
+.head__nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.head__link{
+    font-family: 'Montserrat',sans-serif;
+}
+
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .head__nav ul {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}

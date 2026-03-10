@@ -1,0 +1,280 @@
+/* FLEXBOX + ESTILOS MODO OSCURO */
+
+/* Header */
+.head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a2e;
+}
+
+.head__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.head__link a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.head__link a:hover {
+    color: #e94560;
+}
+
+/* Pagina Principal */
+.pagina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #16213e;
+}
+
+/* Elemento */
+.elemento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #0f3460;
+}
+
+.elemento__figura {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.elemento__titulo {
+    color: #eee;
+}
+
+/* Mensajes */
+.mensaje {
+    background: #1a1a2e;
+}
+
+.mensaje__lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.mensaje__item {
+    flex: 1 1 300px;
+    padding: 2rem;
+    background: #16213e;
+    border-radius: 8px;
+    border: 1px solid #0f3460;
+}
+
+.mensaje__item__titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #e94560;
+}
+
+.mensaje__item__texto {
+    color: #ccc;
+}
+
+/* Nosotros */
+.nosotros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    background: #0f3460;
+    padding: 3rem 1rem;
+}
+
+.nosotros__conteiner {
+    flex: 1 1 400px;
+}
+
+.nosotros__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nosotros__titulo {
+    color: #eee;
+}
+
+.nosotros__texto {
+    color: #ccc;
+}
+
+.nosotros__imagen {
+    flex: 1 1 300px;
+    border-radius: 8px;
+}
+
+/* Productos */
+.producto {
+    background: #1a1a2e;
+    padding: 3rem 1rem;
+}
+
+.producto__titulo {
+    color: #eee;
+}
+
+.producto__card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.card {
+    flex: 1 1 280px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    background: #16213e;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #0f3460;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #e94560;
+}
+
+.card__titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #eee;
+}
+
+.card__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.card__precio {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e94560;
+}
+
+.card__desc {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.card__boton {
+    padding: 0.8rem;
+    background: #e94560;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.card__boton:hover {
+    background: #c7354d;
+}
+
+/* Contacto */
+.contacto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    background: #0f3460;
+    padding: 3rem 1rem;
+}
+
+.contacto__titulo {
+    flex: 1 1 100%;
+    color: #eee;
+}
+
+.contacto__contenido {
+    flex: 1 1 400px;
+}
+
+.contacto__descripcion {
+    color: #ccc;
+}
+
+.contacto img {
+    flex: 1 1 300px;
+    border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a2e;
+    padding: 2rem 1rem;
+}
+
+.footer__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer__link a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer__link a:hover {
+    color: #e94560;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column;
+    }
+    
+    .head__nav ul {
+        justify-content: center;
+    }
+    
+    .nosotros {
+        flex-direction: column;
+    }
+    
+    .contacto {
+        flex-direction: column;
+    }
+    
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .head__nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer__nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
