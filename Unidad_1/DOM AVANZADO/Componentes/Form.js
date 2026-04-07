@@ -1,42 +1,35 @@
 const Form = (() => {
-    const form = document.querySelector('[data-form]');
+    const form = document.querySelector('[data-form]'); //accedemos al formulario
     const btnSubmit = form.querySelector('.btnCreate');
     
-    const inputs = {
-        task: document.querySelector('[data-input-task]'),
-        description: document.querySelector('[data-input-descripcion]'),
-        date: document.querySelector('[data-input-fecha]'),
-        priority: document.querySelector('[data-input-prioridad]'),
-        categoria: document.querySelector('[data-input-categoria]'),
-        ubicacion: document.querySelector('[data-input-ubicacion]'),
-        asignado: document.querySelector('[data-input-asignado]')
-    };
+    const inputTask = document.querySelector('[data-input-task]');//recupero la tarea
+    const inputDescription = document.querySelector('[data-input-descripcion]');//recupero la descripcion
+    const inputFecha = document.querySelector('[data-input-fecha]')//recuperamos la fecha
+    const inputPrioridad = document.querySelector('[data-input-prioridad]');//recupero la prioridad
 
-    // Función para cargar datos cuando clickeas "Editar" en la tabla
-    const cargarDatosParaEditar = (datos, row) => {
-        for (let key in inputs) {
-            if (inputs[key]) inputs[key].value = datos[key];
+
+    const datosForm = ()=>{
+            return{
+                task: inputTask.value.trim(),
+                description: inputDescription.value.trim(),
+                date: inputFecha.value.trim(),
+                priority: inputPrioridad.value.trim()
+            };
+        };
+        const reset =()=>{
+            inputTask.value="";
+            inputDescription.value="";
+            inputFecha.value="";
+            inputPrioridad.value="";
         }
-        btnSubmit.innerHTML = 'Actualizar Tarea <i class="fas fa-sync-alt"></i>';
-        btnSubmit.style.background = "#f39c12"; // Color naranja de edición
-        row.remove(); // Borra la fila vieja para que al dar "Agregar" se cree la nueva con cambios
-    };
 
-    const setDatos = (callback) => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const taskData = {};
-            for (let key in inputs) {
-                taskData[key] = inputs[key].value;
-            }
-            callback(taskData);
-            form.reset();
-            btnSubmit.innerHTML = 'Agregar <i class="fas fa-plus-circle"></i>';
-            btnSubmit.style.background = ""; // Vuelve al color original
-        });
-    };
-
-    return { setDatos, cargarDatosParaEditar };
-})();
-
-export default Form;
+        const setDatos=(callback)=>{
+            form.addEventListener('submit',(event)=>{
+                event.preventDefault();
+                callback(datosForm());
+                reset();
+            });
+        };
+        return{setDatos,}
+    })();
+    export default Form;
