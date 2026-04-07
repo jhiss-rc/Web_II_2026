@@ -7,5 +7,6 @@ import cards from "./Componentes/cards.js";
     Form.setDatos((task) => {
         tabla.addTask(task); // Agrega a la tabla
         cards.update();      // Actualiza las cards de abajo
+        //
     });
 })();
