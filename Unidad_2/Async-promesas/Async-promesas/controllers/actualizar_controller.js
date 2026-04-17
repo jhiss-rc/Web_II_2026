@@ -40,4 +40,3 @@ formulario.addEventListener("submit", (evento) => {
     });
 })
 
-export default formulario;

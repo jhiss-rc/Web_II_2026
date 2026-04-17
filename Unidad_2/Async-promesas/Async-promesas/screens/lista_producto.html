@@ -30,7 +30,7 @@
       <nav>
         <ul class="header__list-nav">
           <li class="header__link"><a href="#">Dashboard</a></li>
-          <li class="header__link"><a href="#">Productos</a></li>
+          <li class="header__link"><a href="registrar_producto.html">Productos</a></li>
           <li class="header__link"><a href="#">Clientes</a></li>
           <li class="header__link"><a href="#">Pets</a></li>
         </ul>
@@ -42,17 +42,17 @@
         <thead>
           <tr>
             <th class="table__column--p">Nombre</th>
-            <th class="table__column--g">Email</th>
+            <th class="table__column--g">Precio</th>
             <th class="table__column--m table__align--right">
               <a
-                href="./registrar_cliente.html"
+                href="./registrar_producto.html"
                 class="simple-button simple-button--add"
-                >Nuevo Cliente</a
+                >Nuevo Producto</a
               >
             </th>
           </tr>
         </thead>
-        <tbody data-table></tbody>
+        <tbody data-tablep></tbody>
       </table>
       <div class="modal-container modal--close">
         <article class="modal">
@@ -68,7 +68,7 @@
         </article>
       </div>
     </main>
-    <script type="module" src="../controllers/client_controller.js"></script>
+    <script type="module" src="../controllers/producto_controller.js"></script>
   </body>
 </html>
 

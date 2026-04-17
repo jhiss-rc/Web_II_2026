@@ -1,21 +1,19 @@
-import { clientService } from "../service/client-service.js";
+import {petService} from "../service/pet-service.js";
 
-const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que recepcionar
+const crearFila = (nombre, edad, raza, peso, id) =>{ //se e asgina lo que se tiene que recepcionar
     const fila = document.createElement('tr'); //se crea una fila
 
     // html como variable
     const contenido = `
-    <td class="td" data-td>
-      ${nombre}
-    </td>
-    <td>${email}</td>
+    <td>${nombre}</td>
+    <td>${edad}</td>
+    <td>${raza}</td>
+    <td>${peso}</td>
+    <td>${id}</td>
     <td>
       <ul class="table__button-control">
         <li>
-          <a
-            href="../screens/editar_cliente.html?id=${id}"
-            class="simple-button simple-button--edit"
-          >
+          <a href="../screens/editar_pets.html?id=${id}" class="simple-button simple-button--edit">
             Editar
           </a>
         </li>
@@ -34,9 +32,9 @@ const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que rece
   btn.addEventListener("click", () =>{
     const id = btn.id;
 
-    clientService.eliminarCliente(id)
+    petService.eliminarPet(id)
     .then(respuesta => {
-      alert("El cliente fue eliminado");
+      alert("El producto fue eliminado");
       window.location.reload() // para cargar una nueva pagina
     })
     .catch(error => alert("Ocurrio un error"));
@@ -48,11 +46,11 @@ const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que rece
   
 }
 
-const table = document.querySelector("[data-table]"); //se selecciona la tabla
-clientService.listarClientes()
+const table = document.querySelector("[data-tablept]"); //se selecciona la tabla
+petService.listarpets()
 .then((data) => {
-    data.forEach(({nombre, email, id}) =>{
-        const nuevafila=crearFila(nombre,email,id)
+    data.forEach(({nombre, edad, raza, peso, id}) =>{
+        const nuevafila=crearFila(nombre, edad, raza, peso, id)
         table.appendChild(nuevafila)
     });
 }).catch((error) => alert("Ocurrio un error"));

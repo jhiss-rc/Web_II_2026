@@ -1,9 +1,65 @@
 {
   "perfil": [
     {
-      "nombre": "FULANITO",
-      "email": "fulanito@univalle.com",
-      "id": 1
+      "nombre": "fulanito",
+      "email": "fulanitofeliz@gmail.com",
+      "id": "bSfw__WZXek"
+    },
+    {
+      "nombre": "eppe",
+      "email": "adads",
+      "id": "85LCYsQikog"
+    },
+    {
+      "nombre": "pedro",
+      "email": "qweqwe",
+      "id": "I7TCMePti9g"
+    },
+    {
+      "nombre": "jacinto",
+      "email": "jacinto@gmail.com",
+      "id": "dB3xP91mjLM"
+    },
+    {
+      "nombre": "maria",
+      "email": "qwe",
+      "id": "rtEVHVGnd80"
     }
-  ]
+  ],
+  "pets": [
+    {
+      "nombre": "bills",
+      "edad": "4",
+      "raza": "gato",
+      "peso": "5kg",
+      "id": "1"
+    },
+    {
+      "nombre": "pepe",
+      "edad": "3",
+      "raza": "callejero",
+      "peso": "4kilos",
+      "id": "al1gMJvYzSk"
+    },
+    {
+      "nombre": "oepe",
+      "edad": "1",
+      "raza": "21",
+      "peso": "s1",
+      "id": "8TcXeKC2-6M"
+    }
+  ],
+  "productos": [
+    {
+      "nombre": "cepillooo",
+      "precio": "15",
+      "id": "BxNniPYVlbQ"
+    },
+    {
+      "nombre": "shampoo",
+      "precio": "12.4",
+      "id": "RjSDtvWc_uY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

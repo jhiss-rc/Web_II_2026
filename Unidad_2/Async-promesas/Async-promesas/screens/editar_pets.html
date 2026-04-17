@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doguito Petshop | Cadastro de cliente</title>
+    <title>Doguito Petshop | Actualizar cliente</title>
     <link rel="icon" href="../assets/img/doguitoadm.svg" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
@@ -40,8 +40,8 @@
     </header>
     <main class="container flex flex--center flex--column">
       <section class="card cadastro">
-        <h1 class="card__title">Nuevo Producto</h1>
-        <form class="flex flex--column" data-formp>
+        <h1 class="card__title">Editar</h1>
+        <form action="#" class="flex flex--column" data-formpt>
           <div class="input-container">
             <input
               name="nombre"
@@ -50,29 +50,57 @@
               type="text"
               placeholder="Nombre"
               required
-              data-nombrep
+              data-nombrept
             />
             <label class="input-label" for="nombre">Nombre</label>
             <span class="input-menssage-error">Este campo es requerido</span>
           </div>
           <div class="input-container">
             <input
-              name="precio"
-              id="precio"
+              name="edad"
+              id="edad"
               class="input"
               type="text"
-              placeholder="Precio"
+              placeholder="Edad"
               required
-              data-precio
+              data-edadpt
             />
-            <label class="input-label" for="precio">Precio</label>
+            <label class="input-label" for="edad">Edad</label>
             <span class="input-menssage-error">Este campo es requerido</span>
           </div>
-          <button type="submit" class="buttonp">Registrar</button>
+          <div class="input-container">
+            <input
+              name="raza"
+              id="raza"
+              class="input"
+              type="text"
+              placeholder="Raza"
+              required
+              data-razapt
+            />
+            <label class="input-label" for="raza">Raza</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+
+          <div class="input-container">
+            <input
+              name="peso"
+              id="peso"
+              class="input"
+              type="text"
+              placeholder="Peso"
+              required
+              data-pesopt
+            />
+            <label class="input-label" for="peso">Peso</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            
+          <button type="submit" class="button">Editar pet</button>
         </form>
       </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     <script type="module" src="../controllers/registroProducto_controller.js"></script>
+      <script type="module" src="../controllers/actualizarPets_controller.js"></script>
   </body>
 </html>

@@ -99,8 +99,12 @@ const eliminarCliente = (id) =>{
 };
 //REFERENCIA ID
 const cliente = (id) =>{
-    return fetch(`http://localhost:3001/perfil/${id}`).then((respuesta) => respuesta.json);
+    return fetch(`http://localhost:3001/perfil/${id}`)
+    .then((respuesta) => respuesta.json())
+
+    .catch((error) => console.log('error aqui', error));
 }
+
 export const clientService = {
     listarClientes,
     crearCliente,

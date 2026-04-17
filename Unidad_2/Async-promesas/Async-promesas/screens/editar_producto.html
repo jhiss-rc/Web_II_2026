@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doguito Petshop | Cadastro de cliente</title>
+    <title>Doguito Petshop | Actualizar cliente</title>
     <link rel="icon" href="../assets/img/doguitoadm.svg" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
@@ -30,7 +30,7 @@
       <nav>
         <ul class="header__list-nav">
           <li class="header__link"><a href="#">Dashboard</a></li>
-          <li class="header__link"><a href="#">Productos</a></li>
+          <li class="header__link"><a href="lista_producto.html">Productos</a></li>
           <li class="header__link">
             <a href="lista_cliente.html">Clientes </a>
           </li>
@@ -40,15 +40,15 @@
     </header>
     <main class="container flex flex--center flex--column">
       <section class="card cadastro">
-        <h1 class="card__title">Nuevo Producto</h1>
-        <form class="flex flex--column" data-formp>
+        <h1 class="card__title">Editar</h1>
+        <form action="#" class="flex flex--column" data-formp>
           <div class="input-container">
             <input
               name="nombre"
               id="nombre"
               class="input"
               type="text"
-              placeholder="Nombre"
+              placeholder="nombre"
               required
               data-nombrep
             />
@@ -61,18 +61,17 @@
               id="precio"
               class="input"
               type="text"
-              placeholder="Precio"
+              placeholder="precio"
               required
               data-precio
             />
             <label class="input-label" for="precio">Precio</label>
             <span class="input-menssage-error">Este campo es requerido</span>
           </div>
-          <button type="submit" class="buttonp">Registrar</button>
+          <button type="submit" class="button">Editar producto</button>
         </form>
       </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     <script type="module" src="../controllers/registroProducto_controller.js"></script>
+      <script type="module" src="../controllers/actualizarProducto_controller.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
-import { clientService } from "../service/client-service.js";
+import {  productService } from "../service/producto-service.js";
 
-const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que recepcionar
+const crearFila = (nombre, precio, id) =>{ //se e asgina lo que se tiene que recepcionar
     const fila = document.createElement('tr'); //se crea una fila
 
     // html como variable
@@ -8,12 +8,12 @@ const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que rece
     <td class="td" data-td>
       ${nombre}
     </td>
-    <td>${email}</td>
+    <td>${precio}</td>
     <td>
       <ul class="table__button-control">
         <li>
           <a
-            href="../screens/editar_cliente.html?id=${id}"
+            href="../screens/editar_producto.html?id=${id}"
             class="simple-button simple-button--edit"
           >
             Editar
@@ -34,9 +34,9 @@ const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que rece
   btn.addEventListener("click", () =>{
     const id = btn.id;
 
-    clientService.eliminarCliente(id)
+    productService.eliminarProducto(id)
     .then(respuesta => {
-      alert("El cliente fue eliminado");
+      alert("El producto fue eliminado");
       window.location.reload() // para cargar una nueva pagina
     })
     .catch(error => alert("Ocurrio un error"));
@@ -48,11 +48,11 @@ const crearFila = (nombre, email, id) =>{ //se e asgina lo que se tiene que rece
   
 }
 
-const table = document.querySelector("[data-table]"); //se selecciona la tabla
-clientService.listarClientes()
+const table = document.querySelector("[data-tablep]"); //se selecciona la tabla
+productService.listarproductos()
 .then((data) => {
-    data.forEach(({nombre, email, id}) =>{
-        const nuevafila=crearFila(nombre,email,id)
+    data.forEach(({nombre, precio, id}) =>{
+        const nuevafila=crearFila(nombre,precio,id)
         table.appendChild(nuevafila)
     });
 }).catch((error) => alert("Ocurrio un error"));
