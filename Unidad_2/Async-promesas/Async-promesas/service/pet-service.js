@@ -36,6 +36,8 @@ const pet = (id) =>{
 
     .catch((error) => console.log('error aqui', error));
 }*/
+
+/*
 //----- SupaBase ------
 const URL_SUPABASE = 'https://ikaqcssaanratpvhkxip.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_zIoTs-zfLdzP2Fel_9Lk6Q_D3o-RqZy';
@@ -63,9 +65,7 @@ const request = async(url, option ={})=>{ //funcion flecha asincrona (todo lo qu
     throw new Error(mensaje);
  }
  return data;
- /*
- if(!response.ok)throw new Error('error clientes');
-        return response.json(); */
+ 
 };
 // get
 const listarpets = () => {
@@ -99,6 +99,69 @@ const eliminarPet = (id) => {
     return request(`${API_URL}?id=eq.${id}`, {
         method: 'DELETE'
     }).then(data => data?.[0] ?? Promise.reject(new Error('No se pudo eliminar')));
+};*/
+
+// ------- MySQL -------
+const API_BASE_URL = "http://localhost/api/pets.php";
+
+const listarpets = () => {
+    return fetch(API_BASE_URL).then(response => {
+        if (!response.ok) throw new Error('error pets');
+        return response.json();
+    })
+}
+
+const crearPets = (nombre, edad, raza, peso, cliente_id) => {
+    return fetch(API_BASE_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nombre,
+            edad,
+            raza,
+            peso,
+            cliente_id,
+            id: uuid.v4()
+        })
+    }).then(response => {
+        if (!response.ok) throw new Error('error crear pet');
+        return response.json();
+    })
+};
+
+const ActualizarPet = (id, nombre, edad, raza, peso, cliente_id) => {
+    return fetch(API_BASE_URL, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id,
+            nombre,
+            edad,
+            raza,
+            peso,
+            cliente_id
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('error actualizar pet');
+        return response.json();
+    })
+    .catch((error) => console.log(error));
+};
+
+const eliminarPet = (id) => {
+    return fetch(`${API_BASE_URL}?id=${id}`, {
+        method: "DELETE"
+    });
+};
+
+const pet = (id) => {
+    return fetch(`${API_BASE_URL}?id=${id}`)
+        .then((response) => response.json());
 };
 
 export const petService = {

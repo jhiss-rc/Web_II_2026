@@ -6,6 +6,7 @@ const selectCliente = document.querySelector("[data-cliente]");
 
 clientService.listarClientes()
   .then(clientes => {
+    console.log("CLIENTES:", clientes);
     clientes.forEach(({ nombre, id }) => {
       const option = document.createElement("option");
       option.value = id;      
