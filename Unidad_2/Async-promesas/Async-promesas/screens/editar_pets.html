@@ -41,7 +41,7 @@
     <main class="container flex flex--center flex--column">
       <section class="card cadastro">
         <h1 class="card__title">Editar</h1>
-        <form action="#" class="flex flex--column" data-formpt>
+        <form class="flex flex--column" data-formpt>
           <div class="input-container">
             <input
               name="nombre"
@@ -60,7 +60,7 @@
               name="edad"
               id="edad"
               class="input"
-              type="text"
+              type="number"
               placeholder="Edad"
               required
               data-edadpt
@@ -87,7 +87,8 @@
               name="peso"
               id="peso"
               class="input"
-              type="text"
+              type="number"
+              step="0.01"
               placeholder="Peso"
               required
               data-pesopt
@@ -96,7 +97,11 @@
             <span class="input-menssage-error">Este campo es requerido</span>
           </div>
           <div class="input-container">
-            
+            <select class="input" data-cliente required>
+              <option value="">Seleccionar dueño</option>
+            </select>
+            <label class="input-label">Dueño</label>
+          </div>
           <button type="submit" class="button">Editar pet</button>
         </form>
       </section>

@@ -62,7 +62,7 @@
               name="edad"
               id="edad"
               class="input"
-              type="text"
+              type="number"
               placeholder="Edad"
               required
               data-edadpt
@@ -89,7 +89,8 @@
               name="peso"
               id="peso"
               class="input"
-              type="text"
+              type="number"
+              step="0.01"
               placeholder="Peso"
               required
               data-pesopt
@@ -97,8 +98,12 @@
             <label class="input-label" for="peso">Peso</label>
             <span class="input-menssage-error">Este campo es requerido</span>
           </div>
-          
-
+          <div class="input-container">
+            <select class="input" data-cliente required>
+              <option value="">Seleccionar dueño</option>
+            </select>
+            <label class="input-label">Dueño</label>
+          </div>
           <button type="submit" class="button">Registrar</button>
         </form>
       </section>

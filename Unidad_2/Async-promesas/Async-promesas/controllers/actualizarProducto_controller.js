@@ -34,7 +34,7 @@ formulario.addEventListener("submit", (evento) => {
     const id= (url.searchParams.get("id"));
     const nombre = document.querySelector("[data-nombrep]").value;
     const precio = document.querySelector("[data-precio]").value;
-    productService.ActualizarProducto(nombre, precio, id) // el id solo s eusa para saber a quien llamar
+    productService.actualizarProducto(id, nombre, precio) // el id solo s eusa para saber a quien llamar
     .then(() =>{
         window.location.href = "../screens/edicion_concluidap.html" 
     });

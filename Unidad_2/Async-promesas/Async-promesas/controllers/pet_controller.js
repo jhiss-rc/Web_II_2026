@@ -1,6 +1,7 @@
 import {petService} from "../service/pet-service.js";
+import {clientService} from "../service/client-service.js";
 
-const crearFila = (nombre, edad, raza, peso, id) =>{ //se e asgina lo que se tiene que recepcionar
+const crearFila = (nombre, edad, raza, peso,nombreCliente, id) =>{ //se e asgina lo que se tiene que recepcionar
     const fila = document.createElement('tr'); //se crea una fila
 
     // html como variable
@@ -9,7 +10,7 @@ const crearFila = (nombre, edad, raza, peso, id) =>{ //se e asgina lo que se tie
     <td>${edad}</td>
     <td>${raza}</td>
     <td>${peso}</td>
-    <td>${id}</td>
+    <td>${nombreCliente}</td>
     <td>
       <ul class="table__button-control">
         <li>
@@ -48,11 +49,19 @@ const crearFila = (nombre, edad, raza, peso, id) =>{ //se e asgina lo que se tie
 
 const table = document.querySelector("[data-tablept]"); //se selecciona la tabla
 petService.listarpets()
-.then((data) => {
-    data.forEach(({nombre, edad, raza, peso, id}) =>{
-        const nuevafila=crearFila(nombre, edad, raza, peso, id)
-        table.appendChild(nuevafila)
+.then((pets) => {
+  clientService.listarClientes().then((clientes) => {
+
+    pets.forEach(({nombre, edad, raza, peso, clientes, id}) => {
+
+      const nombreCliente = clientes ? clientes.nombre : "Sin dueño";
+
+      const nuevafila = crearFila(nombre, edad, raza, peso, nombreCliente, id);
+      table.appendChild(nuevafila);
+
     });
-}).catch((error) => alert("Ocurrio un error"));
+
+  });
+})
 
 

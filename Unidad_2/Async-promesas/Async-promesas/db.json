@@ -7,12 +7,12 @@
     },
     {
       "nombre": "eppe",
-      "email": "adads",
+      "email": "eppe@gmail.com",
       "id": "85LCYsQikog"
     },
     {
       "nombre": "pedro",
-      "email": "qweqwe",
+      "email": "pedro@gmail.com",
       "id": "I7TCMePti9g"
     },
     {
@@ -24,35 +24,43 @@
       "nombre": "maria",
       "email": "qwe",
       "id": "rtEVHVGnd80"
+    },
+    {
+      "nombre": "jhissel",
+      "email": "jhissel@gmail.com",
+      "id": "lG6SITu5BYY"
     }
   ],
   "pets": [
     {
-      "nombre": "bills",
-      "edad": "4",
-      "raza": "gato",
-      "peso": "5kg",
-      "id": "1"
+      "nombre": "pepe",
+      "edad": "3",
+      "raza": "siames",
+      "peso": "5",
+      "clienteId": "bSfw__WZXek",
+      "id": "3xRHxK27xM0"
+    },
+    {
+      "nombre": "oliver",
+      "edad": "5",
+      "raza": "gato naranja",
+      "peso": "6",
+      "clienteId": "lG6SITu5BYY",
+      "id": "fbBL2c-eoPw"
     },
     {
       "nombre": "pepe",
-      "edad": "3",
-      "raza": "callejero",
-      "peso": "4kilos",
-      "id": "al1gMJvYzSk"
-    },
-    {
-      "nombre": "oepe",
-      "edad": "1",
-      "raza": "21",
-      "peso": "s1",
-      "id": "8TcXeKC2-6M"
+      "edad": "4",
+      "raza": "blanco",
+      "peso": "4",
+      "clienteId": "85LCYsQikog",
+      "id": "LAnaMSE2aR4"
     }
   ],
   "productos": [
     {
       "nombre": "cepillooo",
-      "precio": "15",
+      "precio": "13",
       "id": "BxNniPYVlbQ"
     },
     {

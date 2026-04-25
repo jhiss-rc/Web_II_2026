@@ -1,48 +1,88 @@
-import {petService} from "../service/pet-service.js";
+import { petService } from "../service/pet-service.js";
+import { clientService } from "../service/client-service.js";
 
+const formulario = document.querySelector("[data-formpt]");
+const selectCliente = document.querySelector("[data-cliente]");
 
-const formulario = document.querySelector("[data-formpt]"); //se selecciona el formulario
-// estructura asincrona 
-const obInfo = async() =>{
-    const url = new URL(window.location); //se obtiene la url de la pagina
-    const id= (url.searchParams.get("id")) // se recupera el id que s eaumento en el html href="../screens/editar_cliente.html?id=${id}"
+let clienteIdActual = ""; 
+
+const obInfo = async () => {
+
+    const url = new URL(window.location);
+    const id = url.searchParams.get("id");
+
     if(id == null){
-        window.location.href = "/screens/error.html"; // si es error nos envia al html de error :0
+        window.location.href = "/screens/error.html";
     }
+
     const nombre = document.querySelector("[data-nombrept]");
     const edad = document.querySelector("[data-edadpt]");
     const raza = document.querySelector("[data-razapt]");
     const peso = document.querySelector("[data-pesopt]");
-    try{
-        const pets = await petService.pet(id); // se espera a que se devuelva el producto con el id recuperado
-        if(pets.nombre && pets.edad && pets.raza && pets.peso){
-            nombre.value = pets.nombre; // en los espacios donde se va  actlizar se rellena con los valores recuperados desde el JSON
-            edad.value = pets.edad;
-            raza.value = pets.raza;
-            peso.value = pets.peso;
+
+    try {
+
+
+        const clientes = await clientService.listarClientes();
+
+        clientes.forEach(({ nombre, id }) => {
+            const option = document.createElement("option");
+            option.value = id;
+            option.textContent = nombre;
+            selectCliente.appendChild(option);
+        });
+
+      
+        const pet = await petService.pet(id);
+
+        if(pet.nombre && pet.edad && pet.raza && pet.peso){
+
+            nombre.value = pet.nombre;
+            edad.value = pet.edad;
+            raza.value = pet.raza;
+            peso.value = pet.peso;
+
+            clienteIdActual = pet.cliente_id; 
+            selectCliente.value = pet.cliente_id;
+
+        } else {
+            throw new Error();
         }
-        else
-        {
-            throw new Error(); // si no se recupera el nombre o email se lanza un error
-        }
-    }
-    catch(error){
+
+    } catch(error){
+        console.log(error);
         window.location.href = "../screens/error.html"; 
     }
 };
-obInfo(); // se llama a la funcion para que se ejecute
+
+obInfo();
 
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
+
     const url = new URL(window.location);
-    const id= (url.searchParams.get("id"));
+    const id = url.searchParams.get("id");
+
     const nombre = document.querySelector("[data-nombrept]").value;
     const edad = document.querySelector("[data-edadpt]").value;
     const raza = document.querySelector("[data-razapt]").value;
     const peso = document.querySelector("[data-pesopt]").value;
-    petService.ActualizarPet(nombre, edad, raza, peso,  id) // el id solo s eusa para saber a quien llamar
-    .then(() =>{
-        window.location.href = "../screens/edicion_concluidapt.html" 
-    });
-})
 
+    const clienteId = selectCliente.value;
+
+    petService.ActualizarPet(
+        id,
+        nombre,
+        parseInt(edad),
+        raza,
+        parseFloat(peso),
+        clienteId
+    )
+    .then(() => {
+        window.location.href = "../screens/edicion_concluidapt.html";
+    })
+    .catch(error => {
+        console.log(error);
+        alert("No se pudo actualizar");
+    });
+});
