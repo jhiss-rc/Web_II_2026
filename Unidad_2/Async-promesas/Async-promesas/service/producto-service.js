@@ -101,7 +101,7 @@ const eliminarProducto =(id)=>{
 
 const API_BASE_URL = "http://localhost/api/conexionproductos.php";
 
-const listarProductos = () => {
+const listarproductos = () => {
     return fetch(API_BASE_URL).then(response=>{
         if(!response.ok) throw new Error('error productos');
         return response.json();
