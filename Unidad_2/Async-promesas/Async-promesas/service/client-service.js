@@ -106,7 +106,7 @@ const cliente = (id) =>{
 }
     */
 
-
+/*
 // -------- CON MySql ------
  const API_BASE_URL = "http://localhost/api/conexion.php";
 
@@ -157,7 +157,7 @@ const cliente= (id) =>{
     return fetch(`${API_BASE_URL}?id=${id}`).then((response)=>response.json());
 }
 
-/*
+
 // -------- CON SUPABASE ------
 const URL_SUPABASE = 'https://ikaqcssaanratpvhkxip.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_zIoTs-zfLdzP2Fel_9Lk6Q_D3o-RqZy';
@@ -218,6 +218,47 @@ const eliminarCliente =(id)=>{
         method:'DELETE'
     }).then(data=>data?.[0] ?? Promise.reject(new Error ('No se pudo eliminar CLiente, no chido')))
 }*/
+
+// -------- CON SQL SERVER ------
+const API_BASE_URL_SS = "http://localhost:3001/cliente";
+
+const listarClientes = () => {
+    return fetch(API_BASE_URL_SS).then(response => {
+        if (!response.ok) throw new Error('error clientes');
+        return response.json();
+    });
+};
+
+const crearCliente = (nombre, email) => {
+    return fetch(API_BASE_URL_SS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email })
+    }).then(response => {
+        if (!response.ok) throw new Error('error crear cliente');
+        return response.json();
+    });
+};
+
+const actualizarCliente = (id, nombre, email) => {
+    return fetch(`${API_BASE_URL_SS}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email })
+    }).then(response => {
+        if (!response.ok) throw new Error('error actualizar cliente');
+        return response.json();
+    }).catch(error => console.log(error));
+};
+
+const eliminarCliente = (id) => {
+    return fetch(`${API_BASE_URL_SS}/${id}`, { method: "DELETE" });
+};
+
+const cliente = (id) => {
+    return fetch(`${API_BASE_URL_SS}/${id}`).then(response => response.json());
+};
+
 export const clientService = {
     listarClientes,
     crearCliente,

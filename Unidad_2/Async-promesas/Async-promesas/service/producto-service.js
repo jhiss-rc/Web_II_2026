@@ -95,7 +95,7 @@ const eliminarProducto =(id)=>{
     return request(`${API_URL}?id=eq.${id}`, {
         method:'DELETE'
     }).then(data=>data?.[0] ?? Promise.reject(new Error ('No se pudo eliminar Producto, no chido')))
-}*/
+}
 
 // ------- MySQL -------
 
@@ -145,7 +145,47 @@ const eliminarProducto = (id) =>{
 const producto = (id) =>{
     return fetch(`${API_BASE_URL}?id=${id}`).then((response)=>response.json());
 }
+*/
 
+// ------- SQL SERVER -------
+const API_BASE_URL = "http://localhost:3001/productos";
+
+const listarproductos = () => {
+    return fetch(API_BASE_URL).then(response => {
+        if (!response.ok) throw new Error('error productos');
+        return response.json();
+    });
+};
+
+const crearProducto = (nombre, precio) => {
+    return fetch(API_BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, precio })
+    }).then(response => {
+        if (!response.ok) throw new Error('error crear producto');
+        return response.json();
+    });
+};
+
+const actualizarProducto = (id, nombre, precio) => {
+    return fetch(`${API_BASE_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, precio })
+    }).then(response => {
+        if (!response.ok) throw new Error('error actualizar producto');
+        return response.json();
+    }).catch(error => console.log(error));
+};
+
+const eliminarProducto = (id) => {
+    return fetch(`${API_BASE_URL}/${id}`, { method: "DELETE" });
+};
+
+const producto = (id) => {
+    return fetch(`${API_BASE_URL}/${id}`).then(response => response.json());
+};
 
 export const productService = {
     listarproductos,
