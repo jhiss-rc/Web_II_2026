@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ─── CLIENTES ────────────────────────────────────────────────
 
 // GET listar todos
 app.get('/cliente', async (req, res) => {
@@ -79,7 +78,7 @@ app.delete('/cliente/:id', async (req, res) => {
     }
 });
 
-// ─── PETS ────────────────────────────────────────────────────
+
 
 // GET listar todos
 app.get('/pets', async (req, res) => {
@@ -160,7 +159,7 @@ app.delete('/pets/:id', async (req, res) => {
     }
 });
 
-// ─── PRODUCTOS ───────────────────────────────────────────────
+
 
 // GET listar todos
 app.get('/productos', async (req, res) => {
@@ -232,7 +231,6 @@ app.delete('/productos/:id', async (req, res) => {
     }
 });
 
-// ─── ARRANQUE ────────────────────────────────────────────────
 app.listen(process.env.PORT, () => {
     console.log(`Server corriendo en puerto ${process.env.PORT}`);
 });

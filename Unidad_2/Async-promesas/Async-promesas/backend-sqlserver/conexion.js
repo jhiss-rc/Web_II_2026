@@ -6,18 +6,18 @@ const config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    port: parseInt(process.env.DB_PORT),
     options: {
-        encrypt: false,              // cambiar a true si usas Azure
+        encrypt: false,            
         trustServerCertificate: true
     }
 };
 
 const pool = new sql.ConnectionPool(config);
-const poolConnect = pool.connect()
+const poolConnect = pool.connect();
+
+poolConnect
     .then(() => console.log('Conectado a SQL Server'))
-    .catch(err => {
-        console.error('Error de conexion:', err.message);
-        process.exit(1); // detiene el proceso si no puede conectar
-    });
+    .catch(err => console.error('Error de conexion:', err.message));
 
 module.exports = { pool, poolConnect, sql };
