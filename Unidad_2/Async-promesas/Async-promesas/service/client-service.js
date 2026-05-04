@@ -217,7 +217,7 @@ const eliminarCliente =(id)=>{
     return request(`${API_URL}?id=eq.${id}`, {
         method:'DELETE'
     }).then(data=>data?.[0] ?? Promise.reject(new Error ('No se pudo eliminar CLiente, no chido')))
-}*/
+}
 
 // -------- CON SQL SERVER ------
 const API_BASE_URL_SS = "http://localhost:3001/cliente";
@@ -265,6 +265,53 @@ export const clientService = {
     actualizarCliente,
     eliminarCliente,
     cliente
-}
+}*/
+
+const BASE_URL = "http://localhost:3000"; //3306 unicamente para mysql asi que se usara el puerto 3000
+const clientService ={
+    // get 
+    listarClientes: async () =>{
+        const res = await fetch(`${BASE_URL}/cliente`);
+        return res.json();
+    },
+
+    // get por id
+    cliente: async (id) =>{
+        const res = await fetch(`${BASE_URL}/cliente/${id}`);
+        return res.json();
+    },
+
+    //post
+    crearCliente: async (nombre, email) =>{
+        const res = await fetch(`${BASE_URL}/cliente`,{
+            method: "POST",
+            headers:{"Content-Type": "application/json"},
+            body: JSON.stringify({nombre,email, id:uuid.v4()})
+        });
+        return res.json();
+    },
+
+    //PUT
+    actualizarCliente: async (id, nombre, email) =>{
+        const res = await fetch(`${BASE_URL}/cliente/${id}`,{
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({nombre, email})
+        })
+        return res.json();
+    },
+
+    //DELETE 
+    eliminarCliente: async (id) =>{
+        const res = await fetch(`${BASE_URL}/cliente/${id}`,{
+            method: "DELETE"
+        });
+        return res.json();
+    }
+};
+export {clientService};
+
+
+
     
 

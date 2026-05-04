@@ -163,9 +163,9 @@ const pet = (id) => {
     return fetch(`${API_BASE_URL}?id=${id}`)
         .then((response) => response.json());
 };
-*/
+
 // ------- SQL SERVER -------
-const API_BASE_URL = "http://localhost:3001/pets";
+const API_BASE_URL = "http://localhost:3001/pet";
 
 const listarpets = () => {
     return fetch(API_BASE_URL).then(response => {
@@ -210,4 +210,48 @@ export const petService = {
     ActualizarPet,
     eliminarPet,
     pet
-}
+}*/
+
+const BASE_URL = "http://localhost:3000"; //3306 unicamente para mysql asi que se usara el puerto 3000
+const petService ={
+    // get 
+    listarpets: async () =>{
+        const res = await fetch(`${BASE_URL}/pets`);
+        return res.json();
+    },
+
+    // get por id
+    pet: async (id) =>{
+        const res = await fetch(`${BASE_URL}/pets/${id}`);
+        return res.json();
+    },
+
+    //post
+    crearPets: async (nombre, edad, raza, peso, cliente_id) =>{
+        const res = await fetch(`${BASE_URL}/pets`,{
+           method: "POST",
+           headers:{"Content-Type": "application/json"},
+           body: JSON.stringify({nombre, edad, raza, peso, cliente_id, id:uuid.v4()})
+        });
+        return res.json();
+    },
+
+    //PUT
+    ActualizarPet: async (id, nombre, edad, raza, peso, cliente_id) =>{
+        const res = await fetch(`${BASE_URL}/pets/${id}`,{
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({nombre, edad, raza, peso, cliente_id})
+        })
+        return res.json();
+    },
+
+    //DELETE 
+    eliminarPet: async (id) =>{
+        const res = await fetch(`${BASE_URL}/pets/${id}`,{
+            method: "DELETE"
+        });
+        return res.json();
+    }
+};
+export {petService};

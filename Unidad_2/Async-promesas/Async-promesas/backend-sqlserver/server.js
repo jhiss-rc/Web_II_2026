@@ -81,10 +81,10 @@ app.delete('/cliente/:id', async (req, res) => {
 
 
 // GET listar todos
-app.get('/pets', async (req, res) => {
+app.get('/pet', async (req, res) => {
     try {
         await poolConnect;
-        const result = await pool.request().query('SELECT * FROM pets');
+        const result = await pool.request().query('SELECT * FROM pet');
         res.json(result.recordset);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -92,12 +92,12 @@ app.get('/pets', async (req, res) => {
 });
 
 // GET por id
-app.get('/pets/:id', async (req, res) => {
+app.get('/pet/:id', async (req, res) => {
     try {
         await poolConnect;
         const result = await pool.request()
             .input('id', sql.Int, req.params.id)
-            .query('SELECT * FROM pets WHERE id = @id');
+            .query('SELECT * FROM pet WHERE id = @id');
         if (result.recordset.length === 0)
             return res.status(404).json({ error: 'Pet no encontrado' });
         res.json(result.recordset[0]);
@@ -107,7 +107,7 @@ app.get('/pets/:id', async (req, res) => {
 });
 
 // POST crear
-app.post('/pets', async (req, res) => {
+app.post('/pet', async (req, res) => {
     try {
         await poolConnect;
         const { nombre, edad, raza, peso, cliente_id } = req.body;
@@ -117,7 +117,7 @@ app.post('/pets', async (req, res) => {
             .input('raza', sql.NVarChar, raza)
             .input('peso', sql.Decimal(5,2), peso)
             .input('cliente_id', sql.Int, cliente_id)
-            .query(`INSERT INTO pets (nombre, edad, raza, peso, cliente_id)
+            .query(`INSERT INTO pet (nombre, edad, raza, peso, cliente_id)
                     OUTPUT INSERTED.*
                     VALUES (@nombre, @edad, @raza, @peso, @cliente_id)`);
         res.status(201).json(result.recordset[0]);
@@ -127,7 +127,7 @@ app.post('/pets', async (req, res) => {
 });
 
 // PUT actualizar
-app.put('/pets/:id', async (req, res) => {
+app.put('/pet/:id', async (req, res) => {
     try {
         await poolConnect;
         const { nombre, edad, raza, peso, cliente_id } = req.body;
@@ -138,7 +138,7 @@ app.put('/pets/:id', async (req, res) => {
             .input('raza', sql.NVarChar, raza)
             .input('peso', sql.Decimal(5,2), peso)
             .input('cliente_id', sql.Int, cliente_id)
-            .query(`UPDATE pets SET nombre=@nombre, edad=@edad, raza=@raza,
+            .query(`UPDATE pet SET nombre=@nombre, edad=@edad, raza=@raza,
                     peso=@peso, cliente_id=@cliente_id WHERE id=@id`);
         res.json({ mensaje: 'Pet actualizado' });
     } catch (err) {
@@ -147,12 +147,12 @@ app.put('/pets/:id', async (req, res) => {
 });
 
 // DELETE eliminar
-app.delete('/pets/:id', async (req, res) => {
+app.delete('/pet/:id', async (req, res) => {
     try {
         await poolConnect;
         await pool.request()
             .input('id', sql.Int, req.params.id)
-            .query('DELETE FROM pets WHERE id = @id');
+            .query('DELETE FROM pet WHERE id = @id');
         res.json({ mensaje: 'Pet eliminado' });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -162,10 +162,10 @@ app.delete('/pets/:id', async (req, res) => {
 
 
 // GET listar todos
-app.get('/productos', async (req, res) => {
+app.get('/producto', async (req, res) => {
     try {
         await poolConnect;
-        const result = await pool.request().query('SELECT * FROM productos');
+        const result = await pool.request().query('SELECT * FROM producto');
         res.json(result.recordset);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -173,12 +173,12 @@ app.get('/productos', async (req, res) => {
 });
 
 // GET por id
-app.get('/productos/:id', async (req, res) => {
+app.get('/producto/:id', async (req, res) => {
     try {
         await poolConnect;
         const result = await pool.request()
             .input('id', sql.Int, req.params.id)
-            .query('SELECT * FROM productos WHERE id = @id');
+            .query('SELECT * FROM producto WHERE id = @id');
         if (result.recordset.length === 0)
             return res.status(404).json({ error: 'Producto no encontrado' });
         res.json(result.recordset[0]);
@@ -188,14 +188,14 @@ app.get('/productos/:id', async (req, res) => {
 });
 
 // POST crear
-app.post('/productos', async (req, res) => {
+app.post('/producto', async (req, res) => {
     try {
         await poolConnect;
         const { nombre, precio } = req.body;
         const result = await pool.request()
             .input('nombre', sql.NVarChar, nombre)
             .input('precio', sql.Decimal(10,2), precio)
-            .query('INSERT INTO productos (nombre, precio) OUTPUT INSERTED.* VALUES (@nombre, @precio)');
+            .query('INSERT INTO producto (nombre, precio) OUTPUT INSERTED.* VALUES (@nombre, @precio)');
         res.status(201).json(result.recordset[0]);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -203,7 +203,7 @@ app.post('/productos', async (req, res) => {
 });
 
 // PUT actualizar
-app.put('/productos/:id', async (req, res) => {
+app.put('/producto/:id', async (req, res) => {
     try {
         await poolConnect;
         const { nombre, precio } = req.body;
@@ -211,7 +211,7 @@ app.put('/productos/:id', async (req, res) => {
             .input('id', sql.Int, req.params.id)
             .input('nombre', sql.NVarChar, nombre)
             .input('precio', sql.Decimal(10,2), precio)
-            .query('UPDATE productos SET nombre = @nombre, precio = @precio WHERE id = @id');
+            .query('UPDATE producto SET nombre = @nombre, precio = @precio WHERE id = @id');
         res.json({ mensaje: 'Producto actualizado' });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -219,12 +219,12 @@ app.put('/productos/:id', async (req, res) => {
 });
 
 // DELETE eliminar
-app.delete('/productos/:id', async (req, res) => {
+app.delete('/producto/:id', async (req, res) => {
     try {
         await poolConnect;
         await pool.request()
             .input('id', sql.Int, req.params.id)
-            .query('DELETE FROM productos WHERE id = @id');
+            .query('DELETE FROM producto WHERE id = @id');
         res.json({ mensaje: 'Producto eliminado' });
     } catch (err) {
         res.status(500).json({ error: err.message });

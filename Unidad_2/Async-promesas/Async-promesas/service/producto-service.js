@@ -145,10 +145,10 @@ const eliminarProducto = (id) =>{
 const producto = (id) =>{
     return fetch(`${API_BASE_URL}?id=${id}`).then((response)=>response.json());
 }
-*/
+
 
 // ------- SQL SERVER -------
-const API_BASE_URL = "http://localhost:3001/productos";
+const API_BASE_URL = "http://localhost:3001/producto";
 
 const listarproductos = () => {
     return fetch(API_BASE_URL).then(response => {
@@ -193,4 +193,48 @@ export const productService = {
     actualizarProducto,
     eliminarProducto,
     producto
-}
+}*/
+
+const BASE_URL = "http://localhost:3000"; //3306 unicamente para mysql asi que se usara el puerto 3000
+const productService ={
+    // get 
+    listarproductos: async () =>{
+        const res = await fetch(`${BASE_URL}/productos`);
+        return res.json();
+    },
+
+    // get por id
+    producto: async (id) =>{
+        const res = await fetch(`${BASE_URL}/productos/${id}`);
+        return res.json();
+    },
+
+    //post
+    crearProducto: async (nombre, precio) =>{
+        const res = await fetch(`${BASE_URL}/productos`,{
+           method: "POST",
+           headers:{"Content-Type": "application/json"},
+           body: JSON.stringify({nombre,precio, id:uuid.v4()})
+        });
+        return res.json();
+    },
+
+    //PUT
+    actualizarProducto: async (id, nombre, precio) =>{
+        const res = await fetch(`${BASE_URL}/productos/${id}`,{
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({nombre, precio})
+        })
+        return res.json();
+    },
+
+    //DELETE 
+    eliminarProducto: async (id) =>{
+        const res = await fetch(`${BASE_URL}/productos/${id}`,{
+            method: "DELETE"
+        });
+        return res.json();
+    }
+};
+export {productService};

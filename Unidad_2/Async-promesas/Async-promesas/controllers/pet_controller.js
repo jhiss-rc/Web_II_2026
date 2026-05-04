@@ -52,9 +52,10 @@ petService.listarpets()
 .then((pets) => {
   clientService.listarClientes().then((clientes) => {
 
-    pets.forEach(({nombre, edad, raza, peso, clientes, id}) => {
+    pets.forEach(({nombre, edad, raza, peso, cliente, cliente_id, id}) => {
 
-      const nombreCliente = clientes ? clientes.nombre : "Sin dueño";
+      const clienteEncontrado = cliente ?? clientes.find(c => c.id === cliente_id);
+      const nombreCliente = clienteEncontrado ? clienteEncontrado.nombre : "Sin dueño";
 
       const nuevafila = crearFila(nombre, edad, raza, peso, nombreCliente, id);
       table.appendChild(nuevafila);
